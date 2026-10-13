@@ -1,0 +1,42 @@
+/* Demo Shop styles. Two rules here are seeded bugs: .price (SB-3) and .promo (SB-8). */
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 system-ui, sans-serif; color: #1a1a1a; background: #fff; }
+header { background: #f3f4f6; border-bottom: 1px solid #d1d5db; padding: 12px 16px; }
+nav { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+nav .brand { font-weight: 700; margin-right: auto; }
+a { color: #0b4fb3; }
+main { max-width: 760px; margin: 0 auto; padding: 16px; }
+footer { padding: 16px; border-top: 1px solid #d1d5db; color: #374151; }
+button, .button {
+  font: inherit; padding: 8px 14px; border: 0; border-radius: 6px;
+  background: #1f4e8c; color: #fff; cursor: pointer; text-decoration: none; display: inline-block;
+}
+form.inline { display: inline; }
+.who { color: #374151; font-size: 14px; }
+.stack { display: flex; flex-direction: column; gap: 6px; max-width: 360px; }
+.stack input { font: inherit; padding: 8px; border: 1px solid #6b7280; border-radius: 6px; }
+.products { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+.product { border: 1px solid #d1d5db; border-radius: 8px; padding: 12px; }
+.product h2 { font-size: 18px; margin: 0 0 4px; }
+
+/* SB-3: price text is #b3b3b3 on white, about 2.1:1. WCAG AA needs 4.5:1. */
+.price { color: #b3b3b3; font-size: 15px; margin: 0 0 8px; }
+
+/* SB-8: fixed width wider than a 375 px screen. */
+.promo { width: 520px; padding: 10px 14px; background: #fff7d6; border: 1px solid #c9a227; border-radius: 6px; }
+
+.cart { padding-left: 18px; }
+.total { font-weight: 700; }
+.info { min-height: 900px; }
+.hint { font-size: 14px; color: #374151; }
+.datepicker { position: relative; display: flex; gap: 8px; align-items: center; }
+.datepicker input { flex: 1; }
+.dp-toggle { padding: 8px 10px; border: 1px solid #6b7280; border-radius: 6px; cursor: pointer; }
+.dp-grid { position: absolute; top: 100%; left: 0; z-index: 2; background: #fff; border: 1px solid #6b7280; padding: 8px;
+  display: grid; grid-template-columns: repeat(7, 40px); gap: 4px; }
+.dp-grid[hidden] { display: none; }
+.dp-day { padding: 6px 0; text-align: center; border-radius: 4px; cursor: pointer; background: #eef2f7; }
+.order dt { font-weight: 700; }
+.order dd { margin: 0 0 8px; }
+.delivery-result { border: 1px solid #6b7280; padding: 12px 16px; margin: 16px; background: #fff; }
+dialog { border: 1px solid #6b7280; border-radius: 8px; max-width: 360px; }
