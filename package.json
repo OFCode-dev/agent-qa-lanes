@@ -1,0 +1,20 @@
+{
+  "name": "agent-qa-lanes",
+  "version": "0.1.0",
+  "description": "A method for parallel AI-agent browser QA with strict evidence rules, plus a demo shop with seeded bugs.",
+  "license": "MIT",
+  "author": "Omer Faruk Bayrak",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "demo": "node demo-shop/server.js",
+    "test": "node test/smoke.js"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "playwright": "^1.64.0"
+  }
+}
