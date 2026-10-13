@@ -136,13 +136,14 @@ function createHandler(state) {
       );
     }
 
-    // Sign-up. SB-2: the email input has a placeholder but no label.
+    // Sign-up. SB-2: "Email" is plain text, not a <label>. The input has no accessible name.
     if (p === '/signup' && !post) {
       return send(
         res,
         200,
         page('Sign up', user, `<form method="post" action="/signup" class="stack">
-  <input type="email" name="email" placeholder="you@example.test" required>
+  <span class="field-name">Email</span>
+  <input type="email" name="email" required>
   <label for="su-pass">Password</label>
   <input id="su-pass" type="password" name="password" minlength="8" required>
   <button type="submit">Create account</button>

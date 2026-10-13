@@ -7,7 +7,7 @@ Do not show this file to lane agents during a run. They should find the bugs on 
 | id | category | severity | page | bug | where in code |
 | --- | --- | --- | --- | --- | --- |
 | SB-1 | "nothing happened" trap | low | `/cart` | "Check delivery options" works, but the result is a `[role=dialog]` appended at the end of `<body>`, below the fold. Focus does not move. A tester who looks only at the viewport thinks the button is dead. | `public/app.js` |
-| SB-2 | a11y | a11y | `/signup` | The email input has a placeholder and no label. | `server.js`, sign-up form |
+| SB-2 | a11y | a11y | `/signup` | The email input has no label. The word "Email" above it is a plain `<span>`, so screen readers announce an unnamed edit field. | `server.js`, sign-up form |
 | SB-3 | a11y | a11y | `/` | Product prices use `#b3b3b3` on white, about 2.1:1. WCAG AA asks for 4.5:1. | `public/styles.css`, `.price` |
 | SB-4 | a11y | high | `/checkout` | The delivery date picker works with a mouse only. The toggle and the day cells are `div`s with no `tabindex`, and the input is read-only. A keyboard user cannot place an order. | `public/app.js`, `server.js` |
 | SB-5 | security | high | `/verify` | No rate limit on the 6-digit code. Any number of wrong guesses get the same 400 response. There is no lockout and no 429. | `server.js`, `POST /verify` |
