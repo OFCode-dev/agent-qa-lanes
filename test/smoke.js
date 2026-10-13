@@ -123,7 +123,7 @@ async function main() {
       if (attempt === 1) await lib.signUp(op, other);
       else await lib.login(op, other);
       const res = await op.goto(orderPath);
-      const shown = await op.locator('.order-email').textContent().catch(() => '');
+      const shown = await op.locator('.order-email').textContent({ timeout: 2000 }).catch(() => '');
       sightings.push({ status: res.status(), leaked: shown === buyer, shot: await shot(op, `idor-repro-${attempt}`) });
       await ctx.close();
     }
