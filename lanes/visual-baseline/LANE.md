@@ -25,7 +25,7 @@ Capture a reference screenshot of every page and state at 1280 x 720, so later r
 
 ## Output
 
-Besides `report.md`, write `baseline.md`: one line per screenshot with the page, the state and the file name.
+Besides your lane report, write `reports/<date>/lanes/visual-baseline-index.md`: one line per screenshot with the page, the state and the file name.
 
 ## Flows to report in "Flow status"
 

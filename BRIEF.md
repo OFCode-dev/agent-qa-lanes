@@ -6,7 +6,7 @@ Every lane agent reads this file first, then its own `lanes/<name>/LANE.md`. If 
 
 - Target: the URL in `BASE_URL` (default `http://localhost:4173`).
 - Helpers: `qa/lib.js`. Use `launch()`, `newRoleContext()`, `watch()`, `shot()`, `axeScan()`, `signUp()` and `login()` instead of writing your own.
-- Write your scripts to `reports/<date>/<lane>/scripts/`. Write your report to `reports/<date>/<lane>/report.md`.
+- Write your scripts to `reports/<date>/scripts/<lane>/`. Write your lane report to `reports/<date>/lanes/<lane>.md`.
 - Screenshots go to `reports/<date>/shots/<lane>-NN-<what>.png`. `shot()` names them for you.
 
 ## Rules
@@ -48,7 +48,7 @@ Every lane agent reads this file first, then its own `lanes/<name>/LANE.md`. If 
 
 ## Report format
 
-Your `report.md` has exactly these sections, in this order.
+Your lane report has exactly these sections, in this order.
 
 ### 1. Findings
 
@@ -73,4 +73,4 @@ Optional. One line each. No investigation.
 
 ### 4. Message to the orchestrator
 
-At most 25 lines. Counts by severity, the top three findings in one line each, any retraction, anything that blocked you, and the path to `report.md`. No tables. No secrets.
+At most 25 lines. Counts by severity, the top three findings in one line each, any retraction, anything that blocked you, and the path to your lane report. No tables. No secrets.

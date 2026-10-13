@@ -11,7 +11,7 @@ One coordinating agent runs the lanes, merges their reports and decides what cou
 
 1. Check that the target is up: `curl -s -o /dev/null -w "%{http_code}" "$BASE_URL"` returns 200.
 2. Check that you are authorized to test the target. For anything other than the demo shop, get this in writing.
-3. Create `reports/<date>/` and one folder per lane inside it.
+3. Create `reports/<date>/lanes/`, `reports/<date>/scripts/` and `reports/<date>/shots/`.
 4. Update the "Already known, do not re-report" list in each `LANE.md` with accepted findings from earlier runs.
 5. Put secrets in `.env`. Never paste them into a lane prompt.
 
@@ -22,7 +22,7 @@ Give each lane agent the same short prompt and change only the lane name:
 ```
 You are the <lane> lane. Read BRIEF.md, then lanes/<lane>/LANE.md.
 Target: the BASE_URL in .env. Helpers: qa/lib.js.
-Write scripts and report.md under reports/<date>/<lane>/.
+Write scripts to reports/<date>/scripts/<lane>/ and your report to reports/<date>/lanes/<lane>.md.
 Finish with the message to the orchestrator described in BRIEF.md.
 ```
 
@@ -56,7 +56,7 @@ When all lanes are done, or the time box ends, write `reports/<date>/findings.md
 
 1. **Collect.** Copy every row from every lane's findings table. Keep the lane id (`CK-3`, `AX-1`). Add a merged id (`F-1`, `F-2`, ...).
 2. **De-duplicate.** Two rows are duplicates when they name the same page and the same root cause. Keep one merged row, list all lane ids on it, and take the highest severity any lane gave, unless the re-check below lowers it. Different symptoms of one cause are one finding.
-3. **Re-check every blocker and high.** Before you accept one, reproduce it yourself in a fresh browser context with your own script. Save the script and the screenshot under `reports/<date>/orchestrator/`. Then mark the row:
+3. **Re-check every blocker and high.** Before you accept one, reproduce it yourself in a fresh browser context with your own script. Save the script and the screenshot under `reports/<date>/scripts/orchestrator/` and `reports/<date>/shots/`. Then mark the row:
    - `confirmed`: you reproduced it.
    - `not reproduced`: you could not. Lower it to `question` and say what you tried.
    - `retracted`: you proved it wrong. Keep the row, give the reason and link the evidence.
