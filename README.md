@@ -1,5 +1,7 @@
 # agent-qa-lanes
 
+[![test](https://github.com/OFCode-dev/agent-qa-lanes/actions/workflows/test.yml/badge.svg)](https://github.com/OFCode-dev/agent-qa-lanes/actions/workflows/test.yml)
+
 This repo shows a method for browser QA with several AI agents working in parallel. Each agent gets one "lane", such as checkout, accessibility or security, and a shared brief with strict evidence rules. One orchestrating agent starts the lanes, re-checks the serious findings itself and merges everything into one file. The repo includes a small fake shop with eight documented bugs, so you can run the method and score the result against known answers.
 
 ## Evidence rules
@@ -48,6 +50,23 @@ npm test         # smoke lane against the demo shop
 `npm test` starts its own copy of the demo shop on a free port, so you do not need `npm run demo` running. It probes all eight seeded bugs, prints the detection rate and fails unless it finds the accessibility bugs and the order leak. It runs headless and talks only to localhost.
 
 To run a full multi-agent pass, start the demo, then follow [ORCHESTRATOR.md](ORCHESTRATOR.md) with any agent that can read files and run Node.
+
+## Sample output
+
+A real `npm test` run. Each line names the seeded bug, the proof and the screenshot under `reports/<date>/shots/`.
+
+```
+FOUND  SB-1  dialog is last child of body at y=1389, viewport 720, focus not moved; reports/2026-10-15/shots/smoke-05-cart-after-click.png
+FOUND  SB-2  axe "label" on input[type="email"]; reports/2026-10-15/shots/smoke-01-signup-axe.png
+FOUND  SB-3  axe "color-contrast" on 4 price nodes; reports/2026-10-15/shots/smoke-02-home-axe.png
+FOUND  SB-4  0 focusable picker controls, Enter/Space/ArrowDown leave the date empty; reports/2026-10-15/shots/smoke-06-checkout-keyboard.png
+FOUND  SB-5  20 wrong codes, statuses: 400, no 429
+FOUND  SB-6  other user read /orders/1001 with buyer email, 2 of 2 fresh contexts; reports/2026-10-15/shots/smoke-08-idor-repro-1.png, reports/2026-10-15/shots/smoke-09-idor-repro-2.png
+FOUND  SB-7  cancel dialog text has no "refund": "Cancel this order? This cannot be undone. Keep order Yes, cancel"; reports/2026-10-15/shots/smoke-07-cancel-dialog.png
+FOUND  SB-8  scrollWidth 536 > clientWidth 375; reports/2026-10-15/shots/smoke-03-home-375.png
+
+Seeded-bug detection rate: 8/8 (100%)
+```
 
 ## What is in the repo
 
